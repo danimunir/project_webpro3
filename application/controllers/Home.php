@@ -49,7 +49,6 @@ class Home extends CI_Controller{
 
 		$data = array(
 				'record' => $this->Post_model->read('tbl_post', $limit, $offset),
-				'komentar' => $this->Post_model->read_komen('comment'),
 				'pagination' => $this->pagination->create_links(),
 				'katagori' => $this->db->order_by('category', 'asc')->get('tbl_ctgry')->result_array(),
 				'title' => 'Ninja Sehat'
@@ -68,7 +67,6 @@ class Home extends CI_Controller{
 		$this->db->where('ID',$id);
 		$this->db->update('tbl_post',$insertvisit);
 		$data['record']=$this->Post_model->baca_artikel($id);
-		$data['komentar']=$this->Post_model->read_komen($id);
 		//extract($data['record']);
 		$data['title'] = "Baca Selanjutnya" ;
 		$data['visit'] = $this->db->query("select visit from tbl_post where id = '".$id."' ")->row_array();
@@ -159,25 +157,8 @@ class Home extends CI_Controller{
 	}
 	
 
-	public function tambah_komentar($param=NULL){
-		if($param=='kirim_komentar'){
-			$post = $this->input->post();			
-			$id_artikel = $this->input->post('ID');
-			$data = array(
-					'ID' => $id_artikel,
-					'comment_name' => $post['comment_name'],
-					'comment_email' => $post['comment_email'],
-					'comment_body' => $post['comment_body'],
-					'comment_date' => date('Y-m-d')
-				);
-				$this->Post_model->create('comment',$data);
-				redirect(base_url('home/read/'.$id_artikel.'#komentar'));
-		}
-		else{
-			
-		}	
+	
 		
-	} 
 	public function tentang(){
 		$data['title'] = "Tentang" ;
 		$data['tentang']= $this->db->query('select * from tentang')->result_array();
@@ -214,7 +195,7 @@ class Home extends CI_Controller{
 	public function katagori($id){
 		    $katagori = str_replace('%20', ' ', $id);
 		  	$data['record'] = $this->Post_model->search($katagori);
-		 	$data['title'] = "Kategori";
+		 	$data['title'] = "Katagori";
 		 	if (count($data['record']) > 0 ) {
 		 		$data['katagori'] = $this->db->order_by('category', 'asc')->get('tbl_ctgry')->result_array();
 		 		$this->load->view('category', $data);

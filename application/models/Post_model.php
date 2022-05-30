@@ -41,11 +41,7 @@ class Post_model extends CI_Model{
 		return $data;
 	}
 	
-	public function read_komen($ID)
-	{
-		$q = $this->db->query("SELECT * FROM comment WHERE ID='$ID'");
-		return $q->result();
-	}
+	
 	
 	
 
@@ -123,12 +119,5 @@ class Post_model extends CI_Model{
         return $this->db->get('tbl_post')->result_array(); 
     }	
 	
-     public function getkomentar($id_artikel){
-      $this->db->select("*");
-      $this->db->from('comment');
-      $this->db->where('ID', $id_artikel);
-      $this->db->join('tbl_post','ID=comment.ID');
-
-      return $this->db->get();
-    } 	 	
+     
 }

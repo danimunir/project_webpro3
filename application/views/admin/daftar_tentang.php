@@ -25,7 +25,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url('front/daftar_artikel') ?>">List Testimoni</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('front/daftar_artikel') ?>">List Tentang</a></li>
               </ol>
             </ol>
           </div>
@@ -41,7 +41,7 @@
               <!-- general form elements -->
               <div class="card card-default">
                 <div class="card-header">
-                  <h3 class="card-title">List Testimoni</h3>
+                  <h3 class="card-title">List Tentang</h3>
                 </div>
                 <!-- /.card-header -->
                 <table id="example1" class="table table-bordered table-striped">

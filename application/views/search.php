@@ -29,7 +29,6 @@
 							<div class="avatar"><img src="<?php echo base_url().'assets/img/fotokita.jpg'?>" alt="..." class="img-fluid"></div>
 							<div class="title"><span><?php echo $row['author'];?></span></div></a>
 							<div class="date"><i class="icon-clock"></i> <?php echo time_since(strtotime($row['date'])) ?></div>
-							<div class="comments meta-last"><i class="icon-comment"></i><?php $komentar = $this->Post_model->read_komen($row['ID']); echo count($komentar)?></div>
 						</div>
 					</div>
 				</div>
